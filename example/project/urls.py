@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', login),
+    url(r'^accounts/profile/$', 'epitech_auth.views.create_password'),
     # Examples:
     # url(r'^$', 'project.views.home', name='home'),
     # url(r'^project/', include('project.foo.urls')),
