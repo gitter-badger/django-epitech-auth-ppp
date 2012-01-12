@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>epitech_auth example</title>
+	</head>
+	<body>
+		<form method="post" action="/">
+			{% csrf_token %}
+			<table>
+				{{form}}
+				<tr>
+					<th>&nbsp;</th>
+					<td><input type="submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

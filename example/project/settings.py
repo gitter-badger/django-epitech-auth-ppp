@@ -104,9 +104,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.getcwd(), 'templates')
 )
 
 INSTALLED_APPS = (
@@ -117,10 +115,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'epitech_auth'
+    'epitech_auth',
+    'cronjobs'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -145,3 +144,10 @@ LOGGING = {
         },
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'epitech_auth.backends.PPPAuth',
+)
+
+PPP_FILE = 'ppp.blowfish'
+PPP_URL = 'http://perso.epita.fr/ppp.blowfish'
