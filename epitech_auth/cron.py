@@ -1,5 +1,7 @@
 from django.conf import settings
+from epitech_auth.models import LabUser
 import cronjobs, os, urllib
+import bcrypt
 
 @cronjobs.register
 def update_ppp():
@@ -12,3 +14,11 @@ def update_ppp():
         pass
 
     urllib.urlretrieve(ppp_url, ppp_file)
+
+@cronjobs.register
+def generate_htpasswd():
+    for labuser in LabUser.objects.filter(user__is_staff=False):
+        print '%s:%s' % (
+            labuser.user.username,
+            bcrypt.hashpw(labuser.password, bcrypt.gensalt())
+        )
