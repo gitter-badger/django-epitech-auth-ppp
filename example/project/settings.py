@@ -151,3 +151,4 @@ AUTHENTICATION_BACKENDS = (
 
 PPP_FILE = 'ppp.blowfish'
 PPP_URL = 'http://perso.epita.fr/ppp.blowfish'
+HTPASSWD_OUTFILE = 'logins.htpasswd'

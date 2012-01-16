@@ -17,8 +17,10 @@ def update_ppp():
 
 @cronjobs.register
 def generate_htpasswd():
-    for labuser in LabUser.objects.filter(user__is_staff=False):
-        print '%s:%s' % (
-            labuser.user.username,
-            bcrypt.hashpw(labuser.password, bcrypt.gensalt())
+    with open(settings.HTPASSWD_OUTFILE, 'w+') as of:
+        for labuser in LabUser.objects.filter(user__is_staff=False):
+            of.write('%s:%s\n' % (
+                labuser.user.username,
+                bcrypt.hashpw(labuser.password, bcrypt.gensalt())
+            )
         )
