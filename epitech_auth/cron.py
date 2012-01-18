@@ -21,6 +21,6 @@ def generate_htpasswd():
         for labuser in LabUser.objects.filter(user__is_staff=False):
             of.write('%s:%s\n' % (
                 labuser.user.username,
-                bcrypt.hashpw(labuser.password, bcrypt.gensalt())
+                labuser.encrypted_password
             )
         )
