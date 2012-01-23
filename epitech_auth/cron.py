@@ -1,7 +1,6 @@
 from django.conf import settings
 from epitech_auth.models import LabUser
 import cronjobs, os, urllib
-import bcrypt
 
 @cronjobs.register
 def update_ppp():
@@ -19,8 +18,9 @@ def update_ppp():
 def generate_htpasswd():
     with open(settings.HTPASSWD_OUTFILE, 'w+') as of:
         for labuser in LabUser.objects.filter(user__is_staff=False):
-            of.write('%s:%s\n' % (
-                labuser.user.username,
-                labuser.encrypted_password
+            if labuser.encrypted_password:
+                of.write('%s:%s\n' % (
+                    labuser.user.username,
+                    labuser.encrypted_password
+                )
             )
-        )
