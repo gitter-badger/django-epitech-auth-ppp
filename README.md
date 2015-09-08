@@ -1,5 +1,7 @@
 epitech_auth
 ============
+
+[![Join the chat at https://gitter.im/episeclab/django-epitech-auth-ppp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/episeclab/django-epitech-auth-ppp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 by brmzkw for the Epitech Security Laboratory
 ---------------------------------------------
 
